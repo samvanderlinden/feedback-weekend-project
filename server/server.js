@@ -8,8 +8,11 @@ app.use(bodyParser.json()); // needed for angular requests
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('build'));
 
-/** ---------- EXPRESS ROUTES ---------- **/
+/** ---------- REQUIRE ROUTES ---------- **/
+const commentsRouter = require('./modules/routes/commentRoute.route');
 
+/** ---------- EXPRESS ROUTES ---------- **/
+app.use('/api/newComment', commentsRouter);
 
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {
