@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './App.css';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';

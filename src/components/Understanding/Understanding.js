@@ -9,6 +9,7 @@ class Understanding extends Component {
         super(props);
         this.state = {
             understanding: '',
+           
         }
     }
 

@@ -7,10 +7,11 @@ import axios from 'axios';
 class SubmissionSuccess extends Component {
 
 
-
     render() {
         return (
             <div>
+                <h2>Thank you for your feedback!</h2>
+                <Link to="/">Leave New Feedback</Link>
             </div>
         );
     }

@@ -14,7 +14,7 @@ router.post('/', (req, res) => {
             res.sendStatus(201);
         })
         .catch((error) => {
-            console.log('error with postgres genre POST', error);
+            console.log('error with postgres POST', error);
             res.sendStatus(500);
         })
 })

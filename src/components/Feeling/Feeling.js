@@ -8,13 +8,13 @@ class Feeling extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            feeling: '',
+            feeling: '', 
         }
     }
 
-    handleFeelingChange = event => {
+    handleFeelingChange = event =>  {
         this.setState({
-            feeling: event.target.value,
+            feeling: event.target.value
         })
         console.log('event.target.value', event.target.value)
     }
