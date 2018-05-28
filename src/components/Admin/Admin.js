@@ -34,8 +34,6 @@ class Admin extends Component {
 
 
      removeFeedback (id) {
-        const commentId = id
-        const feedbackList = this.state.feedbackList
         console.log('I ve been clicked: ', id)
         axios.delete(`/api/newComment/${id}`)
         .then(response => {
@@ -71,7 +69,6 @@ class Admin extends Component {
                         <td><button onClick={() => {this.removeFeedback(feedback.id)}}>Remove</button></td></tr>)}
                     </tbody>
                 </table>
-                {JSON.stringify(this.state.feedbackList)}
             </div>
         );
     }
