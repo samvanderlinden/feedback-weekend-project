@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
 
 
 class Feeling extends Component {
@@ -25,6 +27,7 @@ class Feeling extends Component {
             payload: this.state
         };
         this.props.dispatch(action);
+        this.props.history.push('/2');
     }
 
     render() {
@@ -32,10 +35,11 @@ class Feeling extends Component {
             <div>
                 <h3>How are you feeling?</h3>
                 <form onSubmit={this.sendFeelingInfo}>
-                <input onChange={this.handleFeelingChange} value={this.state.feeling} />
-                <input type="submit" value="Submit" />
+                <TextField onChange={this.handleFeelingChange} value={this.state.feeling} />
                 </form>
-                <Link to="/2">Next</Link>
+                <div>
+                    <Button onClick={this.sendFeelingInfo} variant="raised" color="primary">Submit</Button>
+                </div>
             </div>
         );
     }

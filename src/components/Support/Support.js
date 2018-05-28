@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 class Support extends Component {
      constructor(props) {
         super(props);
@@ -23,17 +27,19 @@ class Support extends Component {
             payload: this.state
         }
         this.props.dispatch(action);
+        this.props.history.push('/4');
     }
 
     render() {
         return (
             <div>
                 <h3>Are you feeling supported?</h3>
-                <form onSubmit={this.sendSupportInfo}>
-                <input onChange={this.handleSupportChange} value={this.state.support} />
-                <input type="submit" value="Submit" />
+                <form>
+                <TextField onChange={this.handleSupportChange} value={this.state.support} />
                 </form>
-                <Link to="/4">Next</Link>
+                <div>
+                    <Button onClick={this.sendSupportInfo} variant="raised" color="primary">Submit</Button>
+                </div>
             </div>
         );
     }

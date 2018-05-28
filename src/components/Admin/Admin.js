@@ -1,6 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
+
+const CustomTableCell = withStyles(theme => ({
+    head: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+    },
+    body: {
+      fontSize: 14,
+    },
+  }))(TableCell);
+  
+  const styles = theme => ({
+    root: {
+      width: '100%',
+      marginTop: theme.spacing.unit * 3,
+      overflowX: 'auto',
+    },
+    table: {
+      minWidth: 700,
+    },
+    row: {
+      '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.background.default,
+      },
+    },
+  });
 
 const mapReduxStateToProps = (reduxState) => (
     { reduxState }
@@ -51,24 +85,24 @@ class Admin extends Component {
     render() {
         return (
             <div>
-                <table>
-                    <thead>
-                        <tr>
+                <Table>
+                    <TableHead>
+                        <TableRow>
                             <th>Feeling</th>
                             <th>Understanding</th>
                             <th>Support</th>
                             <th>Comment</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.feedbackList.map((feedback) => <tr key={feedback.id}>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.state.feedbackList.map((feedback) => <TableRow key={feedback.id}>
                         <td>{feedback.feeling}</td>
                         <td>{feedback.understanding}</td>
                         <td>{feedback.support}</td>
                         <td>{feedback.comments}</td>
-                        <td><button onClick={() => {this.removeFeedback(feedback.id)}}>Remove</button></td></tr>)}
-                    </tbody>
-                </table>
+                        <td><Button onClick={() => {this.removeFeedback(feedback.id)}} variant="raised" color="secondary">Remove</Button></td></TableRow>)}
+                    </TableBody>
+                </Table>
             </div>
         );
     }

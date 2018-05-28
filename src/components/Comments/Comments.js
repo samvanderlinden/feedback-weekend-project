@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
 
 const mapReduxStateToProps = (reduxState) => (
     { reduxState }
@@ -50,6 +52,7 @@ class Comments extends Component {
         .catch(error => {
             alert('Feedback submission failed:', error);
         })
+        this.props.history.push('/5');
     }
 
     render() {
@@ -57,11 +60,11 @@ class Comments extends Component {
             <div>
                 <h3>Would you like to leave a comment?</h3>
                 <form onSubmit={this.sendCommentInfo}>
-                <input onChange={this.handleCommentChange} value={this.state.comments} />
-                <input type="submit" value="Submit Comment" />
+                <TextField onChange={this.handleCommentChange} value={this.state.comments} />
+                <Button type="submit">Submit Comment</Button>
                 </form>
-                <button onClick={this.submitFeedbackForm}>Submit entire feedback form</button>
-                <Link to="/5">Next</Link>
+                <Button onClick={this.submitFeedbackForm} variant="raised" color="primary">Submit feedback</Button>
+                {/* <Link to="/5">Next</Link> */}
             </div>
         );
     }

@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 
 
 class SubmissionSuccess extends Component {
-
-
     render() {
         return (
             <div>

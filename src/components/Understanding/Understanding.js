@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 
 class Understanding extends Component {
@@ -26,17 +28,19 @@ class Understanding extends Component {
             payload: this.state
         }
         this.props.dispatch(action);
+        this.props.history.push('/3');
     }
 
     render() {
         return (
             <div>
                 <h3>How well are you understanding the material?</h3>
-                <form onSubmit={this.sendUnderstandingInfo}>
-                <input onChange={this.handleUnderstandingChange} value={this.state.understanding} />
-                <input type="submit" value="Submit" />
+                <form>
+                <TextField onChange={this.handleUnderstandingChange} value={this.state.understanding} />
                 </form>
-                <Link to="/3">Next</Link>
+                <div>
+                    <Button onClick={this.sendUnderstandingInfo} variant="raised" color="primary">Submit</Button>
+                </div>
             </div>
         );
     }
