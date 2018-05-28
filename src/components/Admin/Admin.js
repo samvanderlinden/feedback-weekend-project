@@ -34,9 +34,15 @@ class Admin extends Component {
     }
 
 
-    removeFeedback = id => {
-        axios.delete(`/api/newComment/:${this.state.feedbackList[0].id}`)
+     removeFeedback (id) {
+        const commentId = id
+        const feedbackList = this.state.feedbackList
+        console.log('I ve been clicked: ', id)
+        axios.delete(`/api/newComment/${id}`)
         .then(response => {
+            if (response.status === 200){
+                this.fetchData();
+            }
             console.log('this is delete response:', response);
             console.log('delete response.data', response.data)
         })
@@ -44,7 +50,6 @@ class Admin extends Component {
             alert('error with DELETE request', error)
         })
     }
-
 
     render() {
         return (
@@ -64,7 +69,7 @@ class Admin extends Component {
                         <td>{feedback.understanding}</td>
                         <td>{feedback.support}</td>
                         <td>{feedback.comments}</td>
-                        <td><button onClick={this.removeFeedback}>Remove</button></td></tr>)}
+                        <td><button onClick={() => {this.removeFeedback(feedback.id)}}>Remove</button></td></tr>)}
                     </tbody>
                 </table>
                 {JSON.stringify(this.state.feedbackList)}

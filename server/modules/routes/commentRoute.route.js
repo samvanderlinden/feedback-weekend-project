@@ -21,6 +21,7 @@ router.post('/', (req, res) => {
 
 //GET
 router.get('/', (req, res) => {
+    console.log('Im in get!')
     let queryText = `SELECT * FROM "feedback"
     ORDER BY "id" DESC;`;
     pool.query(queryText)
@@ -35,14 +36,14 @@ router.get('/', (req, res) => {
 })
 
 //DELETE
-router.delete('/', (req, res) => {
-    const feedback = req.query;
+router.delete('/:id', (req, res) => {
+    const feedback = req.params;
     console.log('console logging deleted feedback object', feedback);
     console.log('deleting feedback with id', feedback.id);
     pool.query(`DELETE FROM "feedback"
                 WHERE "id" = ($1);`, [feedback.id])
         .then((results) => {
-            res.sendStatus(200);
+            res.status(200).send(results);
         })
         .catch((error) => {
             res.sendStatus(500);
