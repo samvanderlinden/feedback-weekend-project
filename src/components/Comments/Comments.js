@@ -46,11 +46,6 @@ class Comments extends Component {
         axios.post('/api/newComment', feedback)
         .then(response => {
             alert('Thank you for your feedback!');
-            const action = {
-                type: 'SUBMIT_ALL_FEEDBACK',
-                payload: feedback,
-            }
-            this.props.dispatch(action)
         })
         .catch(error => {
             alert('Feedback submission failed:', error);

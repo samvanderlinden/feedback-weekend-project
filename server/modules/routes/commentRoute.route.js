@@ -21,7 +21,8 @@ router.post('/', (req, res) => {
 
 //GET
 router.get('/', (req, res) => {
-    let queryText = `SELECT "feeling", "understanding", "support", "comments" FROM "feedback";`;
+    let queryText = `SELECT * FROM "feedback"
+    ORDER BY "id" DESC;`;
     pool.query(queryText)
     .then((result) => {
         res.send(result.rows);
@@ -33,21 +34,21 @@ router.get('/', (req, res) => {
     })
 })
 
-// //DELETE
-// router.delete('/', (req, res) => {
-//     const movie = req.query;
-//     console.log('console logging deleted movie object', movie);
-//     console.log('deleting movie with id', movie.id);
-//     pool.query(`DELETE FROM "movies"
-//                 WHERE "id" = ($1);`, [movie.id])
-//         .then((results) => {
-//             res.sendStatus(200);
-//         })
-//         .catch((error) => {
-//             res.sendStatus(500);
-//             console.log('error with postgres movie DELETE', error);
-//         })
-// })
+//DELETE
+router.delete('/', (req, res) => {
+    const feedback = req.query;
+    console.log('console logging deleted feedback object', feedback);
+    console.log('deleting feedback with id', feedback.id);
+    pool.query(`DELETE FROM "feedback"
+                WHERE "id" = ($1);`, [feedback.id])
+        .then((results) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            res.sendStatus(500);
+            console.log('error with postgres feedback DELETE', error);
+        })
+})
 
 
 
