@@ -49,11 +49,6 @@ Display all of the existing feedback at the route `/admin`. The most recently ad
 
 ![display feedback](wireframes/admin.png)
 
-------------------To Do List-----------------------
-
-[ X ] Set up database
-[ ] Set up components/import
-[ ] Set up Redux with provider and storeInstance
 
 ## STRETCH GOALS
 
